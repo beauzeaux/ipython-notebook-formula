@@ -1,0 +1,18 @@
+{% from 'ipython_notebook/map.jinja' import ipython_notebook with context %}
+# IPython Notebook
+# adapted from http://www.bxia.net/blog/2013/08/01/upstart-daemonizing/
+
+description "IPython Notebook"
+author "Nick Beaulieu"
+
+start on runlevel [2345]
+stop on runlevel[06]
+
+setuid {{ ipython_notebook.user }}
+
+# need to ensure that this service is up
+respawn
+respawn limit 10 10
+
+# start the process
+exec ipython notebook 

@@ -1,0 +1,7 @@
+{% set ipython_notebook = salt['grains.filter_by']({
+    'default' : {
+    	'user' : 'NotebookServer2',
+    	'password': 'sha1:b93a3701e1b5:9a7d26ef455f276254cad53ba4bfdcc8bdbb7db3',
+    	'port' : '8080'
+    }
+}, merge=salt['pillar.get']('ipython_notebook')) %}
