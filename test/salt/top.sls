@@ -1,0 +1,3 @@
+base:
+  '*':
+    - ipython_notebook

@@ -23,6 +23,8 @@ ipython_notebook:
 /home/{{ ipython_notebook.user }}/.ipython/profile_default/ipython_notebook_config.py:
   file.managed:
     - source: salt://ipython_notebook/templates/ipython_notebook_config.py.template
+    - user: {{ ipython_notebook.user }}
+    - mode: 755
     - template: jinja
     - makedirs: True
     - require:
@@ -33,7 +35,7 @@ ipython_notebook:
     - source: salt://ipython_notebook/templates/ipython-notebook-server.conf.template
     - template: jinja
     - makedirs: True
-    - user: {{ipython_notebook.user}}
+    # - user: {{ipython_notebook.user}}
     - mode: 644
 
 ipython-notebook-server:
